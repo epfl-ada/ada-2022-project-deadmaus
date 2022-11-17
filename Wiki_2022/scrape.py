@@ -62,5 +62,5 @@ if __name__ == "__main__":
         # print(all_links)
     links = pd.read_csv('wikispeedia_paths-and-graph/links.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
     links22 = pd.DataFrame(all_links, columns=['linkSource', 'linkTarget'])
-    links.to_csv("links22.tsv", sep='\t', index=False)
+    links.to_csv("Wiki_2022/links22.tsv", sep='\t', index=False)
 
