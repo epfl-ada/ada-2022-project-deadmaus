@@ -1,15 +1,35 @@
-# Identifying Missing Links in Wikipedia
+# Link structure of Wikipedia vs human intuition
 
 ## Abstract
-When the user clicks or restarts on a page, we can infer that the user expects a link to the target or at least something related to the target, but it is missing. By analyzing the categories of the pages with missing links, we can also gain insight into which categories of Wikipedia pages are underdeveloped. 
+The purpose of this data analysis is to investigate the link structure of Wikipedia and analyse if it corresponds to how humans think Wikipedia is intuitive to use. From there, we are going to explore if Wikipedia, when developing the content of their pages, take this into consideration. This is going to be done in two main segmets of analysis. (1) Comparing the graph of the link structure of Wikipedia 2009 to a graph of how humans navigate the link structure of Wikipedia. The second graph is constructed from recorded games of Wikispeedia, a game where the task is to navigate from one page to another using only the links on each page respectively. (2) In the second part we compare the first graph from part one to a graph constructed of the same Wikipedia pages from 2022. Thus, we can compare the development of the pages over time. Depending ont the answer to part 1, we will analyse if the link structure has improved or decayed in relation to how humans navigate Wikipedia. The dataset represents a subset of all wikipedia pages. Pages representing the same subset is analysed for both time persiods.
 
-Alternatively, a graph of Wikipedia articles can be developed where the edge weights are representative of how deficient the interconnectedness is between two nodes. For example, the edge weight between two nodes can be the number of times the user back clicks or restarts on one node while the target is on the other node. Another possible method of inferring missing links could be identifying that in the pattern “A;B;<;C”, B is missing a link to C. Graphical analysis of this proposed graph should reveal insights into where Wikipedia should channel its efforts into developing its pages.
+## Research Questions
+1. How well did the link structure of Wikipedia follow human intuition in 2009?
+2. How has the Wikipedia link structure evolved between 2009 and 2022?
 
-## Our questions to you:
-How could we potentially expand on this idea? 
-- Suggestions: What “expected” links were missing in the Wikipedia pages from 2011? Have they been fixed in 2022
-Will this be enough on its own? For the entire data story.
-What do you think would be interesting to learn from this analysis?
-Do you have any suggestions on how we might infer missing links in alternative ways?
-One proposed method to create such a pair: Find terminal node from unfinished path; Find a word with high categorical (sub/super) similarity with this word where an outgoing edge does not exist.
-Follow-up: Has this link been created in the Wikipedia today
+## Proposed additinal datasets
+In addition to the Wikispeedia dataset, we have scraped the same pages of Wikipedia as are represented in the links dataset of wikispeedia. We expect to find similar amount of links in the new dataset as in the old.
+
+Processing the new version of the 4600 pages will include:
+* Scraping the complete content of the pages with html tags
+* Indetifying outgoing links of each page and creating a dataset with an origin column (representing the page of which the links are extracted) and a destination column (representing the links found on that page)
+* Data size is expected to be similar to the dataset of 2009 which was ~3 MB
+
+## Methods
+
+
+
+## Proposed timeline
+
+
+## Tasks of individual team members
+
+
+
+
+
+
+
+
+
+
