@@ -23,7 +23,7 @@ def title_from_link(link):
     else:
         return link[rpos+1:]
 
-def get_links(soup, articles):
+def get_links(soup, articles_set):
     '''
     Return all links found on a given page, for which we have an entry in the Wikispeedia dataset
     Parameters-
@@ -35,7 +35,7 @@ def get_links(soup, articles):
         title = title_from_link(link)
 
         
-        if title in articles.article.values:
+        if title in articles_set:
             links.append(title)
 
     # Remove repitions
@@ -50,17 +50,18 @@ if __name__ == "__main__":
       
     res_df = pd.DataFrame()
     all_links = []
+    articles_set = set(articles.article.values)
     for qtitle in tqdm(articles["article"]):
         title = unquote(qtitle)
         url = base_url + title
         # print(url)
         page = requests.get(url)
         soup = BeautifulSoup(page.content, "html.parser")
-        outgoing_links = get_links(soup, articles)
+        outgoing_links = get_links(soup, articles_set)
         for ol in outgoing_links:
             all_links.append((qtitle, ol))
         # print(all_links)
     links = pd.read_csv('wikispeedia_paths-and-graph/links.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
     links22 = pd.DataFrame(all_links, columns=['linkSource', 'linkTarget'])
-    links.to_csv("Wiki_2022/links22.tsv", sep='\t', index=False)
+    links22.to_csv("Wiki_2022/links22.tsv", sep='\t', index=False)
 
