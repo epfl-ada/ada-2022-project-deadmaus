@@ -20,12 +20,16 @@ Processing the new version of the 4600 pages will include:
 To acomplish these goals, we intend to use the methods described below.
 
 **Node2Vec**
-Node2Vec is used to represent the graphs as vectors. When we have the graphs in vector embedding, we can more efficiently carry out...!
-[Alt text](../../../../../../var/folders/ys/8zw_hvxx3fn29zqr94wz19gc0000gn/T/TemporaryItems/NSIRD_screencaptureui_XCyFtr/Screenshot%202022-11-17%20at%2020.01.18.png)
+Node2Vec is used to represent the graphs as vectors. When we have the graphs in vector embedding, we can more efficiently carry out...
 
 
-**PCA**
+**UMAP**
 
+
+**How to determine the relevance of the link structure as proposed in the RQs?**
+We propose a two step methodology to answer the RQs and determine relevance of the links. The first step is to find the centroid of each category when they are plotted in the 128 dimensions of the embedding. We then measure the cosine similarity between the centroids. From this we will receive an appreciation for the relevance between the different categories. We hypothesize that subjects with a higher similarity score are more relevant to each other than two that are distant. An alternative approach to measuring the distance between the centroids is to use a heatmap where the categories are represented on both the X and Y axis. In the intersection of the table of category A and category B, we find the number of outgoing links from A to B. Similarly, in the intersection of B and A, we find the number of outgoing links from category B to A. The argument favouring the former approach is the intuition of relevance. If category A is relevnant to category B then category B should be equally relevant to category A.
+
+The second step is to observe the link structure over the two periods and evaluate wether or not it has chagned. In order to do that we construct bipartite graphs where on one side all the articles are listed and on the other side the 16 categories are listed. Edges are drawn between each article and each category with weights representing the number of outgoing links from the article to each category. One such bipartite graph will be constructed for each period (2009 and 2022). When observing differences and similarities of the two graphs we will be able to inerpret how changes have occurred over time. One scenario could be that article A had in 2009  an edge weight 10 to category 1:10. In 2022 the edge weights have changed to 0 for category 1:5 while increasing their values to 15 for categories 6:10. Seeing this, we can observe how the categories are related to each other through comparing their similarity scores. Hopefully what we will find is that more links have been added to relevant categories and links have been deleted to irrelevant categories. 
 
 
 ## Proposed timeline
@@ -48,6 +52,10 @@ Datastory compleated
 
 ## Tasks of individual team members
 
+
+## Questions to TA
+
+How should we handle articles with multiple categories?
 
 
 
