@@ -19,18 +19,27 @@ if __name__ == "__main__":
     site = pywikibot.Site("en", "wikipedia")
     links09 = pd.read_csv('wikispeedia_paths-and-graph/links.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
     # print(next(x).revid)
+    activ = 0
+    checkpoint_title = "Copenhagen"
+    checkpoint_year = 2020
     for article in tqdm(articles["article"]):
-        prev_links = list(links09[links09["linkSource"] == article].itertuples(index=False, name=None)) # link structure from the wikispeedia dataset
         title = (unquote(article))
+        if activ == 0 and title!=checkpoint_title:
+            continue
+        prev_links = list(links09[links09["linkSource"] == article].itertuples(index=False, name=None)) # link structure from the wikispeedia dataset
         base_url = "https://en.wikipedia.org/w/index.php?"
         url = base_url + title
-        page = pywikibot.Page(site, article)
+        pg = pywikibot.Page(site, article)
         num = 0
         for year in range(2010, 2022):
+            if activ == 0:
+                if year < checkpoint_year:
+                    continue
+                else:
+                    activ = 1
             cur_links = [] # list of tuples (source, target) for current year and current article
-            page = pywikibot.Page(site, article)
             try:
-                revs = page.revisions(content=True, total=1, starttime=str(year)+"-01-01T00:00:00Z", endtime=str(year)+"-12-31T00:00:00Z", reverse=True)
+                revs = pg.revisions(content=True, total=1, starttime=str(year)+"-01-01T00:00:00Z", endtime=str(year)+"-12-31T00:00:00Z", reverse=True)
                 rev = next(revs)
             except:
                 cur_links = prev_links
