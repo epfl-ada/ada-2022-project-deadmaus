@@ -20,12 +20,12 @@ if __name__ == "__main__":
     links09 = pd.read_csv('wikispeedia_paths-and-graph/links.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
     # print(next(x).revid)
     activ = 0
-    checkpoint_title = "Copenhagen"
-    checkpoint_year = 2020
+    checkpoint_article = "Crash_test_dummy"
+    checkpoint_year = 2016 # Make sure that there is at least one revision for that article for that year
     for article in tqdm(articles["article"]):
-        title = (unquote(article))
-        if activ == 0 and title!=checkpoint_title:
+        if activ == 0 and article!=checkpoint_article:
             continue
+        title = (unquote(article))
         prev_links = list(links09[links09["linkSource"] == article].itertuples(index=False, name=None)) # link structure from the wikispeedia dataset
         base_url = "https://en.wikipedia.org/w/index.php?"
         url = base_url + title
