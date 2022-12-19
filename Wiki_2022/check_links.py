@@ -9,9 +9,9 @@ from  scrape import get_links, get_titles
 from urllib.parse import quote, unquote
 
 site = pywikibot.Site("en", "wikipedia")
-title = unquote("DNA_repair")
+title = unquote("Dwight_D._Eisenhower")
 page = pywikibot.Page(site, title)
-year = 2021
+year = 2016
 revs = page.revisions(content=True, total=1, starttime=str(year)+"-01-01T00:00:00Z", endtime=str(year)+"-12-31T00:00:00Z", reverse=True)
 rev = next(revs)
 print(rev.timestamp)
