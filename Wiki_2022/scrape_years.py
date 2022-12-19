@@ -20,10 +20,10 @@ if __name__ == "__main__":
     links09 = pd.read_csv('wikispeedia_paths-and-graph/links.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
     # print(next(x).revid)
     activ = 0
-    checkpoint_article = "David_III_of_Tao"
+    checkpoint_article = "Edward_the_Confessor"
     checkpoint_year = 2010 # Make sure that there is at least one revision for that article for that year
     ctr = 0
-    break_every = 20
+    break_every = 5000
     for article in tqdm(articles["article"]):
         if activ == 0 and article!=checkpoint_article:
             continue
