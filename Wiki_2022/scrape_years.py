@@ -13,7 +13,7 @@ from functools import partial
 
 def get_rev_links(article, articles_set, articles_seen):
     if article in articles_seen:
-        return None
+        return None, article
     site = pywikibot.Site("en", "wikipedia")
     links09 = pd.read_csv('wikispeedia_paths-and-graph/links.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
     title = (unquote(article))
@@ -32,7 +32,6 @@ def get_rev_links(article, articles_set, articles_seen):
         except:
             cur_links = prev_links
         else:
-            num += 1
             prev = revs
             old_id = rev.revid
             urls = url + "&oldid=" + str(old_id)
@@ -56,21 +55,23 @@ def get_rev_links(article, articles_set, articles_seen):
                 ln_en = time()
                 prev_links = cur_links
 
-            res[year] = cur_links
+        res[year] = pd.DataFrame(cur_links, columns=['linkSource', 'linkTarget'])
 
-    return res
+    return (res, article)
 
 if __name__ == "__main__":
     pool = multiprocessing.Pool(16)
     articles = get_titles().article.to_list()
     articles_set = set(articles)
-    articles = articles[:1]
+    articles = articles
     links10 = pd.read_csv('Wiki_Revs/links10.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
     articles_seen = set(links10.linkSource.values)
-    for links in tqdm(pool.imap_unordered(partial(get_rev_links, articles_set=articles_set, articles_seen=articles_seen), articles)):
+    for r in tqdm(pool.imap_unordered(partial(get_rev_links, articles_set=articles_set, articles_seen=articles_seen), articles)):
+        (links, article) = r
         if links:
+            print(f"{article} being written")
             for year in range(2010, 2022):
                 output_path = "Wiki_Revs/links"+str(year)[-2:]+".tsv"
-                links.to_csv(output_path, sep="\t", index=False, mode='a', header=not os.path.exists(output_path))
+                links[year].to_csv(output_path, sep="\t", index=False, mode='a', header=not os.path.exists(output_path))
         else:
-            print("Success")
+            print(f"{article} was seen")
