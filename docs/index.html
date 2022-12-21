@@ -9,6 +9,7 @@
 		<title>Big Picture by HTML5 UP</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<script src="https://unpkg.com/htmlincludejs"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -44,7 +45,7 @@
 			<section id="one" class="main style2 right dark fullscreen">
 				<div class="content box style2">
 					<header>
-						<h2>What Is Wikispeedia?</h2>
+						<h2>Wikipedia</h2>
 					</header>
 					<p><a href="https://wikipedia.org/"><strong>Wikipedia</strong></a> is a beast. A beast which is also many people’s best friend. 
 						Haven’t we all been in a situation 
@@ -54,7 +55,7 @@
 						logic which should determine the link structure of <strong>Wikipedia</strong>. On each page, links should be available 
 						to other pages which are related to the first page.
 				</div>
-				<a href="#EDA" class="button style2 down anchored">Next</a>
+				<a href="#two" class="button style2 down anchored">Next</a>
 			</section>
 
 		<!-- Two -->
@@ -72,35 +73,65 @@
 					What do the paths that you take look like? How do they differ from the shortest path between the two articles?
 				</p>
 			</div>
-			<a href="#work" class="button style2 down anchored">Next</a>
+			<a href="#EDA" class="button style2 down anchored">Next</a>
 		</section>
 
-		<!-- Work -->
-		<section id="work" class="main style3 primary">
+		<!-- EDA -->
+		<section id="EDA" class="main style3 primary">
 			<div class="content">
 				<header>
 					<h2>Exploratory Data Analysis</h2>
+
 					<p>Collaborative authorship is the key aspect to what has allowed <strong>Wikipedia</strong> to grow into the beast that it is. 
 						<strong>Wikipedia</strong> has around 44,8 million registered users who can contribute and as of the 19th December 2022, more than 120 000 users made updates during the preceding 30 days. 
 						This results in an evolutionary process of each page, and of each page’s links. 
 						Therefore, the structure of the network made up of links and pages will change. <br><br>
 						<strong>What does this change look like from 2009 to 2022?</strong></p>
 				</header>
-
 			</div>
-			<a href="#EDA" class="button style2 down anchored">Next</a>
 		</section>
 
-		<!-- Work -->
+		<section id="The Data in Numbers" class="main style3 primary">
+			<div class="content">
+				<header>
+					<h2>The Data in Numbers</h2>
+					<p>Let’s dive into the dataset. We have extended the original Wikispeedia data set by adding a version of every page corresponding to each year between 2010 and 2022. Thus, we end up with 4600 pages times 13 years to begin our analysis on. So what does the data look like?
+			
+						First, we will have a look at the degree distribution of the nodes. The data is seemingly distributed according to a power law, which is quite normal for natural networks.
+						</p>
+				</header>
+				<embed src="plots\degree_distribution.html" width = 750 height = 437>
+			</div>
+		</section>
+
+		<section id="Categories" class="main style3 primary">
+			<div class="content">
+				<embed src="plots\category_distribution.html" width = 750 height = 437>
+				<header>
+					<h2>Categories</h2>
+
+					<p>We can see that Science and Geography dominate the dataset. This might reflect the way the data has been collected, being mainly played by STEM students as the game is distributed via Stanford Snap and EPFL dlab. Something to keep in mind later on in the analysis. 
+					</p>
+				</header>
+				
+
+			</div>
+		</section>
+
+
+		<!-- EDA -->
 		<section id="EDA" class="main style3 primary">
+			<div w3-include-html="content.html"></div>
+
 			<div class="content">
 				<header>
 					<h2>Exploratory Data Analysis</h2>
 					<p>Here are some graphs. Graphs graphs graphs. I love graphs. Click on a graph for explanations.</p>
 				</header>
+				
 
 				<!-- Gallery  -->
-					<div class="gallery">
+					<!-- <div class="gallery">
 						<article class="from-left">
 							<a href="images/fulls/01.jpg" class="image fit"><img src="images/fulls/01.jpg" title="Distribution of the sum of each path's page ranks" alt="" /></a>
 						</article>
@@ -119,7 +150,7 @@
 						<article class="from-right">
 							<a href="images/wikispeedia_hits.png" class="image fit"><img src="images/wikispeedia_hits.png" title="ahahhahah" alt="" /></a>
 						</article>
-					</div>
+					</div> -->
 
 			</div>
 		</section>
@@ -171,6 +202,9 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/include-html.min.js"></script>
+			<script src="https://unpkg.com/htmlincludejs"></script>
+
 
 	</body>
 </html>
