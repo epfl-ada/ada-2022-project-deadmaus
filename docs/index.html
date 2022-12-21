@@ -14,49 +14,48 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-
 		<!-- Header -->
-			<header id="header">
-				<h1>deadmaus</h1>
-				<nav>
-					<ul>
-						<li><a href="#intro">Intro</a></li>
-						<li><a href="#one">Wikipedia</a></li>
-						<li><a href="#two">Wikispeedia</a></li>
-						<li><a href="#EDA">Exploratory Data Analysis</a></li>
-					</ul>
-				</nav>
-			</header>
+		<header id="header">
+			<h1>deadmaus</h1>
+			<nav>
+				<ul>
+					<li><a href="#intro">Intro</a></li>
+					<li><a href="#one">Wikipedia</a></li>
+					<li><a href="#two">Wikispeedia</a></li>
+					<li><a href="#EDA">Exploratory Data Analysis</a></li>
+				</ul>
+			</nav>
+		</header>
 
 		<!-- Intro -->
-			<section id="intro" class="main style1 dark fullscreen">
-				<div class="content">
-					<header>
-						<h2>You will click this link. <br>It is on the top.</h2>
-					</header>
-					<p>A data story through <a href="https://dlab.epfl.ch/wikispeedia/play/">Wikispeedia</a> and beyond.</p>
-					<footer>
-						<a href="#one" class="button style2 down">More</a>
-					</footer>
-				</div>
-			</section>
+		<section id="intro" class="main style1 dark fullscreen">
+			<div class="content">
+				<header>
+					<h2>You will click this link. <br>It is on the top.</h2>
+				</header>
+				<p>A data story through <a href="https://dlab.epfl.ch/wikispeedia/play/">Wikispeedia</a> and beyond.</p>
+				<footer>
+					<a href="#one" class="button style2 down">More</a>
+				</footer>
+			</div>
+		</section>
 
 		<!-- One -->
-			<section id="one" class="main style2 right dark fullscreen">
-				<div class="content box style2">
-					<header>
-						<h2>Wikipedia</h2>
-					</header>
-					<p><a href="https://wikipedia.org/"><strong>Wikipedia</strong></a> is a beast. A beast which is also many people’s best friend. 
-						Haven’t we all been in a situation 
-						where we just had to know the name of Napoleon's mother? And the <a href = "https://it.wikipedia.org/wiki/Palazzo_Bonaparte_(Roma)">house</a> where she spent her final days? In this case, the link structure 
-						of <strong>Wikipedia</strong> can be quite helpful. Going into the page of Napoleon you might very well find the name of 
-						his mother, and a link to the Wikipedia page of her life where you find her dog’s name. This is the 
-						logic which should determine the link structure of <strong>Wikipedia</strong>. On each page, links should be available 
-						to other pages which are related to the first page.
-				</div>
-				<a href="#two" class="button style2 down anchored">Next</a>
-			</section>
+		<section id="one" class="main style2 right dark fullscreen">
+			<div class="content box style2">
+				<header>
+					<h2>Wikipedia</h2>
+				</header>
+				<p><a href="https://wikipedia.org/"><strong>Wikipedia</strong></a> is a beast. A beast which is also many people’s best friend. 
+					Haven’t we all been in a situation 
+					where we just had to know the name of Napoleon's mother? And the <a href = "https://it.wikipedia.org/wiki/Palazzo_Bonaparte_(Roma)">house</a> where she spent her final days? In this case, the link structure 
+					of <strong>Wikipedia</strong> can be quite helpful. Going into the page of Napoleon you might very well find the name of 
+					his mother, and a link to the Wikipedia page of her life where you find her dog’s name. This is the 
+					logic which should determine the link structure of <strong>Wikipedia</strong>. On each page, links should be available 
+					to other pages which are related to the first page.
+			</div>
+			<a href="#two" class="button style2 down anchored">Next</a>
+		</section>
 
 		<!-- Two -->
 		<section id="two" class="main style2 left dark fullscreen">
@@ -106,26 +105,62 @@
 
 		<section id="Categories" class="main style3 primary">
 			<div class="content">
-				<embed src="plots\category_distribution.html" width = 750 height = 437>
 				<header>
 					<h2>Categories</h2>
-
-					<p>We can see that Science and Geography dominate the dataset. This might reflect the way the data has been collected, being mainly played by STEM students as the game is distributed via Stanford Snap and EPFL dlab. Something to keep in mind later on in the analysis. 
-					</p>
+					<p>We can see that Science and Geography dominate the dataset. This might reflect the way the data has been collected, being mainly played by STEM students as the game is distributed via Stanford Snap and EPFL dlab. Something to keep in mind later on in the analysis. </p>
+					<embed src="plots/category_distribution.html" width = 750 height = 437>
 				</header>
-				
-
 			</div>
 		</section>
 
-
-		<!-- EDA -->
-		<section id="EDA" class="main style3 primary">
-			<div w3-include-html="content.html"></div>
-
+		<section id="Links" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h2>Exploratory Data Analysis</h2>
+					<h2>Links</h2>
+					<p>Next we have a look at the adjacency matrix between categories. In this plot, we observe how often a category is linked by another in the 2009 data set. For example, we can see that the Geography row is lighter than the Music row on the Y axis. This indicates that more articles link to Geography than links to Design which makes sense since there are in general  more articles which can be connected to geographical places than design items. 
+						<br><br>
+						On the same topic of article adjacency, let's look at the actual article positioning relative to each other in two dimensions. The nodes have been embedded with node2vec and dimensionality reduced to 3 dimensions using UMAP. 
+						</p>
+					<div class="gallery">
+						<article class="from-left">
+							<a href="plots/gifs/category_heatmap.gif" class="image fit"><img src="plots/category_heatmap/2009.png" title="Number of links between categories" alt="" /></a>
+						</article>
+						<article class="from-right">
+							<embed src="plots/chord_diagram_2009.html" width = 450 height = 450>
+						</article>
+					</div>
+				</header>
+			</div>
+		</section>
+
+		<section id="Graph embeddings" class="main style3 primary">
+			<div class="content">
+				<header>
+					<h2>Graph Embeddings</h2>
+					<p>Interesting observations are that Geography articles are widely spread over the two diagrams while Science articles seem to be clustered at the top right. Furthermore, the IT articles are tightly clustered. 
+					</p>
+				</header>
+				<embed src="plots/projections/umap_2009.html" width = 600 height = 600>
+				<embed src="plots/projections/umap_2022.html" width = 600 height = 600>
+				<embed src="plots/projections/umap_wikispeedia_paths.html" width = 900 height = 900>
+			</div>
+		</section>
+
+		<!-- <section id="" class="main style3 primary">
+			<div class="content">
+				<header>
+					<h2></h2>
+					<p></p>
+					<embed src="plots\" width = 750 height = 437>
+				</header>
+			</div>
+		</section> -->
+
+		<!-- Graphs -->
+		<section id="Graphs" class="main style3 primary">
+			<div class="content">
+				<header>
+					<h2>Graphs</h2>
 					<p>Here are some graphs. Graphs graphs graphs. I love graphs. Click on a graph for explanations.</p>
 				</header>
 				
