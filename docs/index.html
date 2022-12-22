@@ -44,7 +44,7 @@
 		<section id="one" class="main style2 right dark fullscreen">
 			<div class="content box style2">
 				<header>
-					<h2>Wikipedia</h2>
+					<h2>Introduction</h2>
 				</header>
 				<p><a href="https://wikipedia.org/"><strong>Wikipedia</strong></a> is a beast. A beast which is also many people’s best friend. 
 					Haven’t we all been in a situation 
@@ -60,27 +60,22 @@
 		<!-- Two -->
 		<section id="two" class="main style2 left dark fullscreen">
 			<div class="content box style2">
-				<header>
-					<h2>Wikispeedia</h2>
-				</header>
 				<p>This intuition is what the game <a href="https://dlab.epfl.ch/wikispeedia/play/"><strong>Wikispeedia</strong></a> builds on. 
 					The game challenges the user to go from page A to page B 
 					only by using the links of the respective pages. Stanford University collected data on ~76000 of these games, 
 					recording users' navigation through a subset consisting of ~4600 pages of <strong>Wikipedia</strong> in 2009. This allows us to study 
 					how the subset is connected and how users chose to navigate these paths. 
 					<br><br>
-					What do the paths that you take look like? How do they differ from the shortest path between the two articles?
+					<strong>What do the paths that you take look like? <br> How do they differ from the shortest path between the two articles?</strong>
 				</p>
 			</div>
-			<a href="#EDA" class="button style2 down anchored">Next</a>
+			<a href="#introend" class="button style2 down anchored">Next</a>
 		</section>
 
 		<!-- EDA -->
-		<section id="EDA" class="main style3 primary">
+		<section id="introend" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h2>Exploratory Data Analysis</h2>
-
 					<p>Collaborative authorship is the key aspect to what has allowed <strong>Wikipedia</strong> to grow into the beast that it is. 
 						<strong>Wikipedia</strong> has around 44,8 million registered users who can contribute and as of the 19th December 2022, more than 120 000 users made updates during the preceding 30 days. 
 						This results in an evolutionary process of each page, and of each page’s links. 
@@ -88,28 +83,39 @@
 						<strong>What does this change look like from 2009 to 2022?</strong></p>
 				</header>
 			</div>
+			<a href="#Our Dataset" class="button style2 down anchored">Next</a>
 		</section>
 
-		<section id="The Data in Numbers" class="main style3 primary">
+		<section id="Our Dataset" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h2>The Data in Numbers</h2>
-					<p>Let’s dive into the dataset. We have extended the original Wikispeedia data set by adding a version of every page corresponding to each year between 2010 and 2022. Thus, we end up with 4600 pages times 13 years to begin our analysis on. So what does the data look like?
-			
-						First, we will have a look at the degree distribution of the nodes. The data is seemingly distributed according to a power law, which is quite normal for natural networks.
-						</p>
+					<h2>Our Dataset</h2>
+					<p>"Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It’s not a story the Jedi would tell you. It’s a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life… He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. He became so powerful… the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself."
+						<br><br>
+						Our dataset is wikipedia scraped from 2009 - 2022 (artticles + links), + wikispeedia (paths + articles + links) .
+					</p>
 				</header>
-				<embed  src="plots\degree_distribution.html" width = 750 height = 437>
+				<div>
+					<h3>Categories</h3>
+						<p>We can see that Science and Geography dominate the dataset. This might reflect the way the data has been collected, being mainly played by STEM students as the game is distributed via Stanford Snap and EPFL dlab. Something to keep in mind later on in the analysis. </p>
+						<embed src="plots/category_distribution.html" width = 750 height = 437>
+				</div>
 			</div>
+			<a href="#Wikispeedia" class="button style2 down anchored">Next</a>
 		</section>
 
-		<section id="Categories" class="main style3 primary">
+		
+
+		<section id="Wikispeedia" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h2>Categories</h2>
-					<p>We can see that Science and Geography dominate the dataset. This might reflect the way the data has been collected, being mainly played by STEM students as the game is distributed via Stanford Snap and EPFL dlab. Something to keep in mind later on in the analysis. </p>
-					<embed src="plots/category_distribution.html" width = 750 height = 437>
+					<h3>Wikispeedia in Pretty graphs</h3>
+					<p>
+						Introduce the data and numbers of wikispeedia, what the clusters mean, what it means to be close together, etc.
+						Focus on a few clusters and say how interesting they are.
+					</p>
 				</header>
+				<iframe src="plots/projections/umap_wikispeedia_paths.html" loading="lazy" width = "850px" height = "850px"></iframe>
 			</div>
 		</section>
 
@@ -120,15 +126,46 @@
 					<p>Next we have a look at the adjacency matrix between categories. In this plot, we observe how often a category is linked by another in the 2009 data set. For example, we can see that the Geography row is lighter than the Music row on the Y axis. This indicates that more articles link to Geography than links to Design which makes sense since there are in general  more articles which can be connected to geographical places than design items. 
 						<br><br>
 						On the same topic of article adjacency, let's look at the actual article positioning relative to each other in two dimensions. The nodes have been embedded with node2vec and dimensionality reduced to 3 dimensions using UMAP. 
+						
+					<h3>Degree distribution</h3>
+						<p>
+							We can see that the degree distribution is very skewed, with a few pages having a very high number of links, and the majority of pages having a very low number of links. This is a very common phenomenon in real world networks, and is called the <a href="https://en.wikipedia.org/wiki/Power_law">power law</a>.
 						</p>
+					</p>
 					<div class="gallery">
 						<article class="from-left">
-							<a href="plots/gifs/category_heatmap.gif" class="image fit"><img src="plots/category_heatmap/2009.png" title="Number of links between categories" alt="" /></a>
+							<iframe src="plots/gifs/category_heatmap.gif" width="600" height="600"></iframe>
 						</article>
 						<article class="from-right">
-							<embed src="plots/chord_diagram_2009.html" width = 450 height = 450>
+							<iframe src="plots\gifs\wikipedia_degree_distribution.gif" width="100%" height="100%"></iframe>
 						</article>
 					</div>
+				</header>
+			</div>
+		</section>
+
+		<section id="Methodology" class="main style3 primary">
+			<div class="content">
+				<header>
+					<h2>Analysis</h2>
+					<p>
+						Lets actually do something with this data.
+					</p>
+					<h3>Pagerank</h3>
+					<p>
+						This graph shows the distribution of page rank scores over the three networks. What is interesting to note is the development of the link structure between 2009 and 2022 when compared to the weighted graph of 2009. We observe that in 2022, the distribution flattens out and articles with a rank in the middle become more frequent while highly ranked pages become less prevalent. At the same time, we see that the Wikispeedia page usage is tilted towards the pages with high page rank score even when comparing with the 2009 graph. This means that wikipedia is becoming more connected over the period. Users however did not use links that link to high rank pages to a larger degree than they used those linking to low rank pages in 2009. Can we find evidence of what pages have been changed? 
+
+					</p>
+					<embed src="plots/gifs/wikipedia_page_rank_kde.gif" width = 100% height = 100%>
+					<p>
+						We can see that the distribution in pagerank changes every year. Let us see how they change across categories.
+					</p>
+					<embed src="plots/gifs/page_rank_ridge.gif" width = 100% height = 100%>
+					<header>
+						<p>
+							What pages increased the most in which year, fun facts with David_Heymann.
+						</p>
+					</header>
 				</header>
 			</div>
 		</section>
@@ -139,19 +176,12 @@
 					<h2>Graph Embeddings</h2>
 					<p>Interesting observations are that Geography articles are widely spread over the two diagrams while Science articles seem to be clustered at the top right. Furthermore, the IT articles are tightly clustered. 
 					</p>
-					<iframe src="plots/projections/umap_2009.html" loading="lazy" width = "850px" height = "850px"></iframe>
-					<iframe src="plots/projections/umap_2022.html" loading="lazy" width = "850px" height = "850px"></iframe>
-					<iframe src="plots/projections/umap_wikispeedia_paths.html" loading="lazy" width = "850px" height = "850px"></iframe>
-						<!-- <iframe src="plots/projections/umap_2009.html" loading="lazy" width = 850 height = 850></iframe>
-							<iframe src="plots/projections/umap_2009.html" loading="lazy" width = 850 height = 850></iframe>
-								<iframe src="plots/projections/umap_2009.html" loading="lazy" width = 850 height = 850></iframe> -->
-					<!-- <embed src="plots/projections/umap_wikispeedia_paths.html" width = 850 height = 850> -->
+					<!-- <iframe src="plots/projections/umap_2009.html" loading="lazy" width = "850px" height = "850px"></iframe> -->
+					<!-- <iframe src="plots/projections/umap_2022.html" loading="lazy" width = "850px" height = "850px"></iframe> -->
+					<!-- <iframe src="plots/projections/umap_wikispeedia_paths.html" loading="lazy" width = "850px" height = "850px"></iframe> -->
+						
 				</header>
-					
-				
 			</div>
-			
-			
 		</section>
 		
 		
