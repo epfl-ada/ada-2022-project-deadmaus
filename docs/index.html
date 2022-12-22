@@ -47,11 +47,12 @@
 					<h2>Introduction</h2>
 				</header>
 				<p><a href="https://wikipedia.org/"><strong>Wikipedia</strong></a> is a beast. A beast which is also many people’s best friend. 
-					Haven’t we all been in a situation 
-					where we just had to know the name of Napoleon's mother? And the <a href = "https://it.wikipedia.org/wiki/Palazzo_Bonaparte_(Roma)">house</a> where she spent her final days? In this case, the link structure 
-					of <strong>Wikipedia</strong> can be quite helpful. Going into the page of Napoleon you might very well find the name of 
-					his mother, and a link to the Wikipedia page of her life where you find her dog’s name. This is the 
-					logic which should determine the link structure of <strong>Wikipedia</strong>. On each page, links should be available 
+					Haven’t we all been in a situation where we just had to know the name of Napoleon's mother? And the name of the 
+					house where she spent her final days? In this case, the link structure 
+					of <strong>Wikipedia</strong> can be quite helpful. Going into the page of Napoleon you might very well find the name of his mother and a 
+					link to the page about her life, where you find that she lived at <a href = "https://it.wikipedia.org/wiki/Palazzo_Bonaparte_(Roma)">Palazzo Bonaparte</a> in Roma until she died at 85 years of age.
+					<br><br>
+					This is the logic which should determine the link structure of <strong>Wikipedia</strong>. On each page, links should be available 
 					to other pages which are related to the first page.
 			</div>
 			<a href="#two" class="button style2 down anchored">Next</a>
@@ -62,11 +63,11 @@
 			<div class="content box style2">
 				<p>This intuition is what the game <a href="https://dlab.epfl.ch/wikispeedia/play/"><strong>Wikispeedia</strong></a> builds on. 
 					The game challenges the user to go from page A to page B 
-					only by using the links of the respective pages. Stanford University collected data on ~76000 of these games, 
+					only through using the links of the respective pages. Stanford University collected data on ~76000 of these games, 
 					recording users' navigation through a subset consisting of ~4600 pages of <strong>Wikipedia</strong> in 2009. This allows us to study 
 					how the subset is connected and how users chose to navigate these paths. 
 					<br><br>
-					<strong>What do the paths that you take look like? <br> How do they differ from the shortest path between the two articles?</strong>
+					<strong>What do the paths that the players took look like? <br> How do they differ from the shortest path between the two pages?</strong>
 				</p>
 			</div>
 			<a href="#introend" class="button style2 down anchored">Next</a>
@@ -76,10 +77,10 @@
 		<section id="introend" class="main style3 primary">
 			<div class="content">
 				<header>
-					<p>Collaborative authorship is the key aspect to what has allowed <strong>Wikipedia</strong> to grow into the beast that it is. 
-						<strong>Wikipedia</strong> has around 44,8 million registered users who can contribute and as of the 19th December 2022, more than 120 000 users made updates during the preceding 30 days. 
-						This results in an evolutionary process of each page, and of each page’s links. 
-						Therefore, the structure of the network made up of links and pages will change. <br><br>
+					<p>Collaborative authorship is the key that allowed <strong>Wikipedia</strong> to grow into the beast that it is. 
+						<strong>Wikipedia</strong> has around 44,8 million registered users who can contribute. In November 2022, more than 120 000 updated Wikipedia pages. 
+						This results in the evolution of each page and its links over time.
+						<br><br>
 						<strong>What does this change look like from 2009 to 2022?</strong></p>
 				</header>
 			</div>
@@ -90,56 +91,68 @@
 			<div class="content">
 				<header>
 					<h2>Our Dataset</h2>
-					<p>"Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not. It’s not a story the Jedi would tell you. It’s a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midichlorians to create life… He had such a knowledge of the dark side that he could even keep the ones he cared about from dying. The dark side of the Force is a pathway to many abilities some consider to be unnatural. He became so powerful… the only thing he was afraid of was losing his power, which eventually, of course, he did. Unfortunately, he taught his apprentice everything he knew, then his apprentice killed him in his sleep. Ironic. He could save others from death, but not himself."
+					<p>
+						Our dataset is a combination of two datasets - Wikispedia data from Stanford University and Wikipedia data from the website itself.
+						We scraped the network information of Wikipedia from 2010 - 2022 of all existing pages of the Stanford dataset. 
+						This resulted in 13 versions of each page which we performed temporal analysis on.
 						<br><br>
-						Our dataset is wikipedia scraped from 2009 - 2022 (artticles + links), + wikispeedia (paths + articles + links) .
+						On top of the network data, Wikispedia also provided us the paths that players took while playing the game.  
 					</p>
 				</header>
 				<div>
-					<h3>Categories</h3>
-						<p>We can see that Science and Geography dominate the dataset. This might reflect the way the data has been collected, being mainly played by STEM students as the game is distributed via Stanford Snap and EPFL dlab. Something to keep in mind later on in the analysis. </p>
-						<embed src="plots/category_distribution.html" width = 750 height = 437>
+					<p>Let's take a first look at the categories of the Wikipedia pages. <i>Science</i> is the most common category, followed by <i>Geography</i>.</p>
+					<embed src="plots/category_distribution.html" width = 750 height = 437>
 				</div>
 			</div>
-			<a href="#Wikispeedia" class="button style2 down anchored">Next</a>
 		</section>
-
-		
 
 		<section id="Wikispeedia" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h3>Wikispeedia in Pretty graphs</h3>
-					<p>
-						Introduce the data and numbers of wikispeedia, what the clusters mean, what it means to be close together, etc.
-						Focus on a few clusters and say how interesting they are.
-					</p>
+					<h3>What does Wikispedia look like?</h3>
 				</header>
 				<iframe src="plots/projections/umap_wikispeedia_paths.html" loading="lazy" width = "850px" height = "850px"></iframe>
+				<p>
+					We embeded the network generated by Wikispedia into a graph, and then projected it down to 3 dimensions.
+					The closer the pages appear to each other, the closer they are in semantic space.
+					In general, articles of the same category appear close to each other. In particular, if we filter by <i>Science</i>,
+					we can see that there are dense clusters in Space, Chemical Elements and Animals. In contrast, <i>Geography</i>
+					is more spread out. Wikispedia players apparently find it easier to relate from places to other topics.
+				</p>
 			</div>
 		</section>
 
 		<section id="Links" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h2>Links</h2>
-					<p>Next we have a look at the adjacency matrix between categories. In this plot, we observe how often a category is linked by another in the 2009 data set. For example, we can see that the Geography row is lighter than the Music row on the Y axis. This indicates that more articles link to Geography than links to Design which makes sense since there are in general  more articles which can be connected to geographical places than design items. 
+					<h3>Links</h3>
+					<p>
+						Let's have a look at the adjacency matrix between categories. In this plot, we observe how often a category is linked by another over the years. For example, we can see that the <i>Geography</i> row is lighter than the <i>Music</i> row. This indicates that more articles link to <i>Geography</i> than links to <i>Music</i> which makes sense since there are in general more articles which can be connected to geographical places than <i>Music</i>. 
 						<br><br>
 						On the same topic of article adjacency, let's look at the actual article positioning relative to each other in two dimensions. The nodes have been embedded with node2vec and dimensionality reduced to 3 dimensions using UMAP. 
-						
+				</header>
+			</div>
+			<div class="content">
+				<header>
 					<h3>Degree distribution</h3>
 						<p>
 							We can see that the degree distribution is very skewed, with a few pages having a very high number of links, and the majority of pages having a very low number of links. This is a very common phenomenon in real world networks, and is called the <a href="https://en.wikipedia.org/wiki/Power_law">power law</a>.
 						</p>
 					</p>
-					<div class="gallery">
-						<article class="from-left">
-							<iframe src="plots/gifs/category_heatmap.gif" width="600" height="600"></iframe>
-						</article>
-						<article class="from-right">
-							<iframe src="plots\gifs\wikipedia_degree_distribution.gif" width="100%" height="100%"></iframe>
-						</article>
-					</div>
+				</header>
+			</div>
+			
+		</section>
+
+		<section id="Gallery" class="main">
+			<div class="gallery">
+				<article class="from-left">
+					<iframe src="plots/gifs/category_heatmap.gif" width="600" height="600"></iframe>
+				</article>
+				<article class="from-right">
+					<iframe src="plots\gifs\wikipedia_degree_distribution.gif" width="100%" height="100%"></iframe>
+				</article>
+			</div>
 				</header>
 			</div>
 		</section>
@@ -174,7 +187,7 @@
 			<div class="content">
 				<header>
 					<h2>Graph Embeddings</h2>
-					<p>Interesting observations are that Geography articles are widely spread over the two diagrams while Science articles seem to be clustered at the top right. Furthermore, the IT articles are tightly clustered. 
+					<p>Interesting observations are that <i>Geography</i> articles are widely spread over the two diagrams while <i>Science</i> articles seem to be clustered at the top right. Furthermore, the IT articles are tightly clustered. 
 					</p>
 					<!-- <iframe src="plots/projections/umap_2009.html" loading="lazy" width = "850px" height = "850px"></iframe> -->
 					<!-- <iframe src="plots/projections/umap_2022.html" loading="lazy" width = "850px" height = "850px"></iframe> -->
