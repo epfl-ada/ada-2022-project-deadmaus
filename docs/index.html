@@ -9,7 +9,7 @@
 		<title>You will click this link. It is on the top.</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<script src="https://unpkg.com/htmlincludejs"></script>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -99,7 +99,7 @@
 						First, we will have a look at the degree distribution of the nodes. The data is seemingly distributed according to a power law, which is quite normal for natural networks.
 						</p>
 				</header>
-				<embed src="plots\degree_distribution.html" width = 750 height = 437>
+				<embed  src="plots\degree_distribution.html" width = 750 height = 437>
 			</div>
 		</section>
 
@@ -133,18 +133,28 @@
 			</div>
 		</section>
 
-		<section id="Graph embeddings" class="main style3 primary">
+		<section id="Graph embeddings" class="main style3 secondary">
 			<div class="content">
 				<header>
 					<h2>Graph Embeddings</h2>
 					<p>Interesting observations are that Geography articles are widely spread over the two diagrams while Science articles seem to be clustered at the top right. Furthermore, the IT articles are tightly clustered. 
 					</p>
+					<iframe src="plots/projections/umap_2009.html" loading="lazy" width = "850px" height = "850px"></iframe>
+					<iframe src="plots/projections/umap_2022.html" loading="lazy" width = "850px" height = "850px"></iframe>
+					<iframe src="plots/projections/umap_wikispeedia_paths.html" loading="lazy" width = "850px" height = "850px"></iframe>
+						<!-- <iframe src="plots/projections/umap_2009.html" loading="lazy" width = 850 height = 850></iframe>
+							<iframe src="plots/projections/umap_2009.html" loading="lazy" width = 850 height = 850></iframe>
+								<iframe src="plots/projections/umap_2009.html" loading="lazy" width = 850 height = 850></iframe> -->
+					<!-- <embed src="plots/projections/umap_wikispeedia_paths.html" width = 850 height = 850> -->
 				</header>
-				<embed src="plots/projections/umap_2009.html" width = 900 height = 900>
-				<embed src="plots/projections/umap_2022.html" width = 900 height = 900>
-				<embed src="plots/projections/umap_wikispeedia_paths.html" width = 900 height = 900>
+					
+				
 			</div>
+			
+			
 		</section>
+		
+		
 
 		<!-- <section id="" class="main style3 primary">
 			<div class="content">
@@ -237,9 +247,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="assets/js/include-html.min.js"></script>
-			<script src="https://unpkg.com/htmlincludejs"></script>
-
 
 	</body>
 </html>
