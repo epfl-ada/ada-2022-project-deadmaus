@@ -46,6 +46,7 @@
 					<h2>Position of links</h2>
 				</header>
 				<p>
+
 					INTRODUCE THE QUESTION
 				</p>
 			</div>
@@ -71,38 +72,19 @@
 		<section id="introend" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h2></h2>
-					<p>Collaborative authorship is the key that allowed <strong>Wikipedia</strong> to grow into the beast that it is. 
-						<strong>Wikipedia</strong> has around 44,8 million registered users who can contribute. In November 2022, more than 120 000 updated Wikipedia pages. 
-						This results in the evolution of each page and its links over time.
-						<br><br>
-						<strong>What does this change look like from 2009 to 2022?</strong></p>
-				</header>
-			</div>
-			<a href="#Our Dataset" class="button style2 down anchored">Next</a>
-		</section>
-
-		<section id="Our Dataset" class="main style3 primary">
-			<div class="content">
-				<header>
-					<h2>Our Dataset</h2>
+					<h2>The position of links</h2>
 					<p>
-						Our dataset is a combination of two datasets - Wikispedia data from Stanford University and Wikipedia data from the website itself.
-						We scraped the network information of Wikipedia from 2010 - 2022 of all existing pages of the Stanford dataset. 
-						This resulted in 13 versions of each page which we performed temporal analysis on.
-						<br><br>
-						On top of the network data, Wikispedia also provided us the paths that players took while playing the game.  
+						Now we explore the effect the position of the link has on the probability of the user clicking it. 
+						There are many factors that can affect the probability of a player clicking a link. We use the actual shortest path to the link as an unbiased estimator of the probability of the player clicking the link. Therefore, if we compare the position of the link that the player actually clicks to the link that would get him closest to the target, we can see how the position of the link affects the probability of the player clicking it.	
 					</p>
 				</header>
-				<div>
-					<p>Let's take a first look at the categories of the Wikipedia pages. <i>Science</i> is the most common category, followed by <i>Geography</i>.</p>
-					<embed src="plots/category_distribution.html" width = 750 height = 437>
-				</div>
+				<embed src="plots/relative_position.html" width = 100% height = 100%>
+				<p>
+					The shortest path links is uniformly distributed over the pages. However, users are biased towards links that appear higher on the page.
+				</p>
 			</div>
-		</section>
 
-		
-		
+		</section>
 
 		<!-- <section id="" class="main style3 primary">
 			<div class="content">
