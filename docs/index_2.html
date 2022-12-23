@@ -50,17 +50,6 @@
 			</div>
 			<a href="#introend" class="button style2 down anchored">Next</a>
 		</section>
-		
-		<section id="introend" class="main style3 primary">
-			<div class="content">
-				<header>
-					<h2>Splotch Plots</h2>
-					<p>
-						Now let's analyse the data to see if players are indeed influenced by the position of the link on the page in Wikispeedia games. Let us compare it against the link which is along to the shortest path to the destination.
-					</p>
-				</header>
-			</div>
-		</section>
 
 		<section id="introend" class="main style3 primary">
 			<div class="content">
@@ -85,12 +74,36 @@
 					<h3>Confounders</h3>
 					<embed src="images/causal_diagram.png" width = 70% height = 70%>
 					<p>
-						However, there are still confounding factors that can affect the probability of a player clicking a link, and we need to account for them in order to isolate the effect of link position. In the previous page, we identified <strong>Pagerank</strong> and <strong>Category</strong> as two factors that greatly affect the link structure of Wikispeedia. Notice in the following graph that the distribution of the link position on the page differs greatly between categories.
+						However, there are still confounding factors that can affect the probability of a player clicking a link, and we need to account for them in order to isolate the effect of link position. In the previous page, we identified <strong>Pagerank</strong> and <strong>Category</strong> as two factors that greatly affect the link structure of Wikispeedia. 
 					</p>
 				</header>
+			</div>
+		</section>
+
+		<section id="introend" class="main style3 secondary">
+			<div class="content">
 				<header>
+					<h2>Where are the links on the page?</h2>
+					<p>
+						Notice in the following graph that the distribution of the link position on the page differs greatly between categories.
+					</p>
 					<embed src="plots/relative_position/relative_position_density_by_category.png" width = 70% height = 70%>
+					<p>
+						The splotch plot below helps us visualise the correlation between the Pagerank and the position of the link on the page for each category. 
+						<br><br>
+						Think of each plot as a Wikipedia page, where the links in the page get more important as you go from left to right. Going down within a plot is akin to scrolling down a page. The shading of the plot represents how often a link to a page of that category appears at that position with such a level of importance.
+						<br><br>
+						Some categories do exhibit a tendency towards a corner. For example, <i>Science</i> and <i>History</i> with greater importance are more likely to appear at the top of the page.
+						<br><br>
+						The key takeaway for the purposes of our analysis is that there is some correlation between Category, Pagerank and the position of the link on the page.					
+					</p>
+					<embed src="plots/jointdist_pagerank_relpos/jointdist_pagerank_relpos.png" width="75%" height="75%">
 				</header>
+			</div>
+		</section>
+
+		<section id="Unconfounding the Confounders" class="main style3 primary">
+			<div class="content">
 				<header>
 					<h3>Unconfounding the Confounders</h3>
 					<p>
