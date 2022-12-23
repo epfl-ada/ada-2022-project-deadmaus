@@ -58,7 +58,7 @@
 					<p>
 						Now let's analyse the data to see if players are indeed influenced by the position of the link on the page in Wikispeedia games. Let us compare it against the link which is along to the shortest path to the destination.
 					</p>
-					<embed src="plots/relative_position/relative_pos_sp.png" width="100%" height="100%">
+					<embed src="plots/relative_position/relative_pos_sp.png" width="80%" height="80%">
 					<p>
 						This graph shows the position on the page of links. The distribution of the link that leads to the shortest is roughly uniform, but the distribution of the links that the players actually clicked on is heavily biased towards the top of the page.
 					</p>
@@ -72,10 +72,13 @@
 				</header>
 				<header>
 					<h3>Confounders</h3>
-					<embed src="images/causal_diagram.png" width = 532 height = 378>
+					<embed src="images/causal_diagram.png" width = 70% height = 70%>
 					<p>
 						However, there are still confounding factors that can affect the probability of a player clicking a link, and we need to account for them in order to isolate the effect of link position. In the previous page, we identified <strong>Pagerank</strong> and <strong>Category</strong> as two factors that greatly affect the link structure of Wikispeedia.
 					</p>
+				</header>
+				<header>
+					<embed src="plots/relative_position/" width = 70% height = 70%>
 				</header>
 				<header>
 					<h3>Unconfounding the Confounders</h3>
@@ -106,14 +109,21 @@
 				</div>
 				<header>
 					<p>
-						Even after controlling for all the controlled variables, we still see a significant difference in the probability of a player clicking a link based on its position on the page. This is a strong indication that players are indeed influenced by the position of the link on the page.
+						After controlling for propensity, we see that the control group shifted to slightly favour links at the top of the page. This indicates 
+						Running an independent t-test on the control and treatment groups, we get p-value close to zero <strong>(p ~ 1e-12)</strong> even after balancing the groups. This is a strong indication that players are indeed influenced by the position of the link on the page.
 					</p>
 				</header>
-				<header>
-					<p>
-						Even after controlling for all the controlled variables, we still see a significant difference in the probability of a player clicking a link based on its position on the page. This is a strong indication that players are indeed influenced by the position of the link on the page.
-					</p>
-				</header>
+			</div>
+		</section>
+
+		<section id="one2" class="main style2 right dark fullscreen">
+			<div class="content box style2">
+				<h2>Conclusion</h2>
+				<p>
+					We have shown that players are indeed influenced by the position of the link on the page. This is a strong indication that the link structure of a page can be used to influence the user's behaviour. This can be used to improve the user experience of a website, or even to manipulate the user's behaviour. EXTREMELY SUSPICIOUS.
+					<br><br>
+					<strong>Thanks for reading our data story!</strong>
+				</p>
 			</div>
 		</section>
 		
