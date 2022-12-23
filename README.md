@@ -31,6 +31,7 @@ Uniform Manifold Approximation and Projection (UMAP) we are able to take the hig
 3D versions can be found in our <a href="https://epfl-ada.github.io/ada-2022-project-deadmaus/#What%20does%20our%20data%20look%20like?">data story</a>.
 
 **How to characterise the evolution of Wikipedia's link structure**
+
 We characterised Wikipedia primarily throught two perspectives: Pagerank and Categories.
 
 A heatmap where the categories are represented on both the X and Y axis was created. In the intersection of the heatmap at row A and column, we find the number of outgoing links from category A to B.
@@ -47,6 +48,7 @@ Next, we segmented our data by category of the article, and repeated the previou
 For the "Countries" category, we observed a marked difference between the pagerank distributions of Wikipedia and Wikispeedia. While Wikipedia considered pages to be very central, Wikispeedia suggested that users did not perceive these pages to be particularly central.
 
 **How to determine the whether link position affects the player clicking on the link**
+
 We are investigating the following hypothesis: "Wikispeedia users are biased towards clicking links higher on the page".
 Our study is defined as follows:
 Treatment: The position of the link chosen by the player on the page.
@@ -59,7 +61,11 @@ We can control for the effects of Pagerank and Category by using a propensity sc
 
 For every (page, destination) pair, we calculate the cosine similarity between every link on that page and the destination page and choose the link for our control with a probability proportional to the calculated cosine similarities. The reason for doing so is to simulate the human intuition behind link choices. We use the embeddings of the Wikipedia pages from 2007 as a proxy for human intuition, since they were developed by humans. 
 
-With these methods, we would be able to isolate the effect that link position has on the player clicking the link. For the purposes of statistical hypothesis testing, a paired t-test was chosen.
+With these methods, we isolated the effect of link position on the number of clicks. 
+<img src="docs/plots/relative_position/relative_position_density_unmatched.png" width="400"> <img src="docs/plots/relative_position/relative_position_density_matched.png" width="400">
+We can see that after controlling for pagerank and category the control group has slightly shifted towards the treatment group, but it is still not as concentrated at the top of the page as the treatment group. Running an independent t-test on the two groups shows us that the mean of the treatment group is significantly lower (i.e biased towards links higher on the page) than the control group, with a p-value of 1e-12.
+
+We therefore conclude that the position of a link on the page most likely does affect the chance of that link getting clicked by a Wikispeedia user.
 
 ## Tasks of individual team members
 * Amey: Quantitative and qualitative graph analysis, data scraping
