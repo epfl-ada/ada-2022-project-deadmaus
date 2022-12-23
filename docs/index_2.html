@@ -56,15 +56,19 @@
 			<div class="content">
 				<header>
 					<h2>Link Position</h2>
-					<embed src="plots/relative_position/relative_pos_density.png" width="100%" height="100%">
 					<p>
-						This graph shows the position on the page of links. The distribution of the shortest-path link is roughly uniform, but the distribution of the links that the players actually clicked on is heavily biased towards the top of the page.
+						Now let's analyse the data to see if players are indeed influenced by the position of the link on the page in Wikispeedia games. Let us compare it against the link which is along to the shortest path to the destination.
 					</p>
+					<embed src="plots/relative_position/relative_position_sp.png" width="100%" height="100%">
+					<p>
+						This graph shows the position on the page of links. The distribution of the link that leads to the shortest is roughly uniform, but the distribution of the links that the players actually clicked on is heavily biased towards the top of the page.
+					</p>
+					
 				</header>
 				<header>
 					<h3>So we're done! ... right?</h3>
 					<p>
-						Unfortunately, no. We need to carefully choose a <strong>control group</strong> in order to isolate the effect of link position. Luckily, we do have a predictor for semantic similarity: <strong>Graph embeddings</strong>! Given a page and a target destination, we can use <strong>cosine similarity</strong> to calculate the page that is closest to the target destination in the embedding space. This gives us our control group.
+						We need to carefully choose a <strong>control group</strong> in order to isolate the effect of link position. Luckily, we do have a predictor for semantic similarity: <strong>Graph embeddings</strong>! Given a page and a target destination, we can use <strong>cosine similarity</strong> to calculate the page that is closest to the target destination in the embedding space. This gives us our control group.
 					</p>
 					<embed src="images/causal_diagram.png" width = 532 height = 378>
 					<p>
@@ -77,9 +81,14 @@
 				</header>
 				<header>
 					<h2>Let's put it to the test!</h2>
-					<embed src="plots/relative_position/relative_position_matched.png" width = 485 height = 349>
+					<embed src="plots/relative_position/relative_position_density_matched.png" width = 100% height = 100%>
 					<p>
-						T TEST LETS GO
+						Even after controlling for all the controlled variables, we still see a significant difference in the probability of a player clicking a link based on its position on the page. This is a strong indication that players are indeed influenced by the position of the link on the page.
+					</p>
+				</header>
+				<header>
+					<p>
+						Even after controlling for all the controlled variables, we still see a significant difference in the probability of a player clicking a link based on its position on the page. This is a strong indication that players are indeed influenced by the position of the link on the page.
 					</p>
 				</header>
 			</div>
