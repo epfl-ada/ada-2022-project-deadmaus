@@ -17,12 +17,9 @@
 		<header id="header">
 			<h1>deadmaus</h1>
 			<nav>
-				<ul>
+				<!-- <ul>
 					<li><a href="#intro">Intro</a></li>
-					<li><a href="#one">Wikipedia</a></li>
-					<li><a href="#two">Wikispeedia</a></li>
-					<li><a href="#EDA">Exploratory Data Analysis</a></li>
-				</ul>
+				</ul> -->
 			</nav>
 		</header>
 
@@ -67,13 +64,16 @@
 				<header>
 					<h3>So we're done! ... right?</h3>
 					<p>
-						Unfortunately, no. There are many confounding factors that can affect the probability of a player clicking a link, and we need to account for them in order to isolate the effect of link position. In the previous page, we identified <strong>Pagerank</strong> and <strong>Category</strong> as two factors that greatly affect the link structure of Wikispeedia, but on top of these, there are many other confounding factors, like human intuition, that we cannot manually account for.
+						Unfortunately, no. We need to carefully choose a <strong>control group</strong> in order to isolate the effect of link position. Luckily, we do have a predictor for semantic similarity: <strong>Graph embeddings</strong>! Given a page and a target destination, we can use <strong>cosine similarity</strong> to calculate the page that is closest to the target destination in the embedding space. This gives us our control group.
 					</p>
-					<embed src="images/causal_diagram.png" width = 500 height = 300>
+					<embed src="images/causal_diagram.png" width = 532 height = 378>
 					<p>
-						We need to carefully choose a <strong>control</strong> in order to account for these confounders. Luckily, we do have a predictor for semantic similarity: <strong>Graph embeddings</strong>! Given a page and a target destination, we can use <strong>cosine similarity</strong> to calculate the page that is closest to the target destination in the embedding space. This link serves as a proxy for human intuition and other hidden confounders, and is suitable as a control pair for our observational experiment. 
+						There are confounding factors that can affect the probability of a player clicking a link, and we need to account for them in order to isolate the effect of link position. In the previous page, we identified <strong>Pagerank</strong> and <strong>Category</strong> as two factors that greatly affect the link structure of Wikispeedia.
+						<br><br>
+						We can attenuate their effects by calculating a <strong>propensity score</strong> for each page, which is the probability that a a player will click on the page given the values of the confounding factors. Afterwards, we can match each link clicked to the link in the control group with the closest propensity score. This greatly increases the power of our statistical analysis.
+						 
 					</p>
-					
+					<embed src="images/causal_diagram_propensity.png" width = 485 height = 349>
 				</header>
 				<header>
 					<h2>Let's put it to the test!</h2>
@@ -83,74 +83,7 @@
 				</header>
 			</div>
 		</section>
-
-		<!-- <section id="" class="main style3 primary">
-			<div class="content">
-				<header>
-					<h2></h2>
-					<p></p>
-					<embed src="plots\" width = 750 height = 437>
-				</header>
-			</div>
-		</section> -->
-
-		<!-- Graphs -->
-		<!-- <section id="Graphs" class="main style3 primary">
-			<div class="content">
-				<header>
-					<h2>Graphs</h2>
-					<p>Here are some graphs. Graphs graphs graphs. I love graphs. Click on a graph for explanations.</p>
-				</header> -->
-				
-
-				<!-- Gallery  -->
-					<!-- <div class="gallery">
-						<article class="from-left">
-							<a href="images/fulls/01.jpg" class="image fit"><img src="images/fulls/01.jpg" title="Distribution of the sum of each path's page ranks" alt="" /></a>
-						</article>
-						<article class="from-right">
-							<a href="images/fulls/02.jpg" class="image fit"><img src="images/fulls/02.jpg" title="Distribution of the sum of each path's page ranks but idk the difference" alt="" /></a>
-						</article>
-						<article class="from-left">
-							<a href="images/2009_category.png" class="image fit"><img src="images/2009_category.png" title="Articles by category in 2009" alt="" /></a>
-						</article>
-						<article class="from-right">
-							<a href="images/2022_category.png" class="image fit"><img src="images/2022_category.png" title="Articles by category in 2022" alt="" /></a>
-						</article>
-						<article class="from-left">
-							<a href="images/wikispeedia_category.png" class="image fit"><img src="images/wikispeedia_category.png" title="Articles by category in Wikispeedia" alt="" /></a>
-						</article>
-						<article class="from-right">
-							<a href="images/wikispeedia_hits.png" class="image fit"><img src="images/wikispeedia_hits.png" title="ahahhahah" alt="" /></a>
-						</article>
-					</div> -->
-
-			</div>
-		</section>
-
-
-		<!-- Contact -->
-			<!-- <section id="contact" class="main style3 secondary">
-				<div class="content">
-					<header>
-						<h2>Say Hello.</h2>
-						<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.</p>
-					</header>
-					<div class="box">
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
-								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
-								<div class="field"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
-							</div>
-							<ul class="actions special">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
-						</form>
-					</div>
-				</div>
-			</section> -->
-
+		
 		<!-- Footer -->
 			<footer id="footer">
 
