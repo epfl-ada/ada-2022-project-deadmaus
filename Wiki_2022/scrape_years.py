@@ -16,9 +16,9 @@ def get_rev_links(article, articles_set, articles_seen):
     if article in articles_seen:
         return None, article
     site = pywikibot.Site("en", "wikipedia")
-    links07 = pd.read_csv('wikispeedia_paths-and-graph/links.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
+    links21 = pd.read_csv('Wiki_Revs/links21.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
     title = (unquote(article))
-    prev_links = list(links07[links07["linkSource"] == article].itertuples(index=False, name=None)) # link structure from the wikispeedia dataset
+    prev_links = list(links21[links21["linkSource"] == article].itertuples(index=False, name=None)) # link structure from the wikispeedia dataset
     dest_base = "/wpcd/wp/" + article[0] + "/"
     fname = article + ".htm"
     with open("wpcd/wp/" + article[0] + "/" + article + ".htm", "r", encoding='utf-8', errors='ignore') as f:
@@ -27,7 +27,7 @@ def get_rev_links(article, articles_set, articles_seen):
     url = base_url + title
     pg = pywikibot.Page(site, article)
     res = dict()
-    for year in range(2008, 2022):
+    for year in range(2022, 2023):
         dest_path = str(year) + dest_base
         cur_links = [] # list of tuples (source, target) for current year and current article
         try:
@@ -81,15 +81,16 @@ if __name__ == "__main__":
     articles = get_titles().article.to_list()
     articles_set = set(articles)
     articles = articles
-    links08 = pd.read_csv('Wiki_Revs/links08.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
-    articles_seen = set(links08.linkSource.values)
+    # links08 = pd.read_csv('Wiki_Revs/links08.tsv', comment='#', delimiter='\t', names=['linkSource', 'linkTarget'])
+    # articles_seen = set(links08.linkSource.values)
+    articles_seen = set()
     if not os.path.exists("Wiki_Revs"):
         os.makedirs("Wiki_Revs")
     for r in tqdm(pool.imap_unordered(partial(get_rev_links, articles_set=articles_set, articles_seen=articles_seen), articles)):
         (links, article) = r
         if links:
             print(f"{article} being written")
-            for year in range(2008, 2022):
+            for year in range(2022, 2023):
                 output_path = "Wiki_Revs/links"+str(year)[-2:]+".tsv"
                 links[year].to_csv(output_path, sep="\t", index=False, mode='a', header=not os.path.exists(output_path))
         else:
