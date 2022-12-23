@@ -58,7 +58,7 @@
 				<h2>Wikispeedia</h2>
 				<p>This intuition is what the game <strong>Wikispeedia</strong> builds on. 
 					The game challenges the user to go from page A to page B 
-					only through using the links of the respective pages. Many interesting strategies have developed from players, including getting to the page of <a href="https://en.wikipedia.org/wiki/United_States">the United States</a> as fast as possible, before focusing in on the destination page.
+					only through using the links of the respective pages. Many interesting strategies have developed from players, including getting to the page of <a href="https://en.wikipedia.org/wiki/United_States">the United States</a> as fast as possible, since it is the most well-connected page.
 					<br><br>
 					<a href="https://dlab.epfl.ch/wikispeedia/play/"><strong>Try it yourself!</strong></a>
 					<br><br>
@@ -155,7 +155,7 @@
 			</div>
 		</section>
 
-		<section id="Methodology" class="main style3 secondary">
+		<section id="Pagerank" class="main style3 secondary">
 			<div class="content">
 				<header>
 					<h2>But what does this mean?</h2>
@@ -173,7 +173,7 @@
 					</p>
 				</header>
 				<header>
-					<embed src="plots/gifs/page_rank_ridge.gif" loading = lazy width = 100% height = 100%>
+					<embed src="plots/gifs/page_rank_ridge.gif" loading = lazy width = 80% height = 80%>
 					<p>
 						The Pagerank distributions for each distributions are evolving over the years. In addition, the shaded distribution represents the Pagerank distribution of the Wikispeedia graph. The most prominent difference in distributions can be seen in the <i>Countries</i> category. Namely, we see that the Pagerank distribution is quite concentrated twowards high Pagerank values. In other words, the <i>Countries</i> pages are considered to be very central. However, Wikispeedia users seem to disagree on this. Instead, according to them, the centrality measure of the <i>Countries</i> category is a much wider distribution with most pages being less important than the actual Wikipedia graph would suggest.
 					</p>
@@ -181,26 +181,52 @@
 			</div>
 		</section>
 
-		<section id="Wikipedia: An Evolving Network" class="main style3 primary">
+		<section class="main style3 primary">
 			<div class="content">
 				<header>
 					<h2>Wikipedia: An Evolving Network</h2>
 					<p>
 						Now let's take a look at which pages changed the most in terms of links.
 					</p>
-					<p>
-						The greatest increases in outlinks are seemingly random. This is because the greatest increases in outlinks are from pages that Wikipedia writers decide to develop. This is a testament to how bad inlinks are at predicting the importance of pages.
-					</p>
-					<embed src = images/outlinks.png width = 400 height = 100%>
-					<p>
-						Countries dominate the pages with the most outlinks by far. Something always happens somewhere, so developing a Wikipedia page can easily be done by adding links to <i>Country</i> pages.
-					</p>
-					<embed src = images/inlinks.png width = 100% height = 100%>
-					<p>
-						We also noticed that in 2020, the page <i>David Heymann</i> exploded in Pagerank, with a 65% increase in percentile in one year. This can be attributed to the COVID-19 pandemic, as he was the director of the WHO's Health Emergencies Programme. This represents a real increase in the importance of his page. TODO: NOT TRUE BUT OKAY
-					</p>
-					<embed src = images/pagerank.png width = 100% height = 100%>
 				</header>
+			</div>
+		</section>
+
+		<section id="Wikipedia: An Evolving Network" class="main style2 left">
+			<div class="gallery">
+				<article class="from-left">
+					<header>
+						<h3>Inlinks</h3>
+						<p>
+							Countries dominate the pages with the most inlinks by far. Something always happens somewhere, so developing a Wikipedia page can easily be done by adding links to <i>Country</i> pages. 
+						</p>
+					</header>
+				</article>
+				<article class="from-right">
+					<embed src = images/inlinks.png width = 450 height = 300>
+				</article>
+				<article class="from-left">
+					<header>
+						<h3>Outlinks</h3>
+						<p>
+							The greatest increases in outlinks are seemingly random. This is because the greatest increases in outlinks are from pages that Wikipedia writers decide to develop. This is a testament to how bad inlinks are at predicting the importance of pages.
+						</p>
+					</header>
+				</article>
+				<article class="from-right">
+					<embed src = images/outlinks.png width = 450 height = 300>
+				</article>
+				<article class="from-left">
+					<header>
+						<h3>Pagerank</h3>
+						<p>
+							We also noticed that in 2020, the page <i>David Heymann</i> exploded in Pagerank, with a 65% increase in percentile in one year. This can be attributed to the COVID-19 pandemic, as he was the director of the WHO's Health Emergencies Programme. This represents a real increase in the importance of his page. TODO: NOT TRUE BUT OKAY
+						</p>
+					</header>
+				</article>
+				<article class="from-right">
+					<embed src = images/outlinks.png width = 450 height = 300>
+				</article>
 			</div>
 		</section>
 

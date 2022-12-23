@@ -59,9 +59,9 @@
 			<div class="content">
 				<header>
 					<h2>Link Position</h2>
-					<embed src="plots/relative_position.html">
+					<embed src="plots/relative/pos/relative_pos_density.png">
 					<p>
-						This graph shows the position on the page of links. The distribution of the shortest-path link is roughly uniform, but the distribution of the links that the players actually clicked on is heavily skewed towards the top of the page.
+						This graph shows the position on the page of links. The distribution of the shortest-path link is roughly uniform, but the distribution of the links that the players actually clicked on is heavily biased towards the top of the page.
 					</p>
 				</header>
 				<header>
@@ -71,15 +71,10 @@
 					</p>
 					<embed src="images/causal_diagram.png" width = 500 height = 300>
 					<p>
-						We need to carefully choose a <strong>control</strong> in order to account for these confounders. Luckily, we do have a predictor for semantic similarity: <strong>Graph embeddings</strong>! Given a page and a target destination, we can calculate the page that is closest to the target destination in the embedding space. This page can serve as a control pair to the link that the player <i>actually</i> clicked on. 
+						We need to carefully choose a <strong>control</strong> in order to account for these confounders. Luckily, we do have a predictor for semantic similarity: <strong>Graph embeddings</strong>! Given a page and a target destination, we can use <strong>cosine similarity</strong> to calculate the page that is closest to the target destination in the embedding space. This link serves as a proxy for human intuition and other hidden confounders, and is suitable as a control pair for our observational experiment. 
 					</p>
 					
 				</header>
-				
-				
-				<p>
-					The shortest path links is uniformly distributed over the pages. However, users are biased towards links that appear higher on the page.
-				</p>
 				<header>
 					<h2>Let's put it to the test!</h2>
 					<p>
