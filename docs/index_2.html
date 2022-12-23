@@ -31,7 +31,7 @@
 				</header>
 				<p>It doesn't matter what we say, players will just click the links on top.</p>
 				<footer>
-					<a href="#one" class="button style2 down">More</a>
+					<a href="#one2" class="button style2 down">More</a>
 				</footer>
 			</div>
 		</section>
@@ -60,14 +60,13 @@
 					</p>
 					<embed src="plots/relative_position/relative_pos_sp.png" width="80%" height="80%">
 					<p>
-						This graph shows the position on the page of links. The distribution of the link that leads to the shortest is roughly uniform, but the distribution of the links that the players actually clicked on is heavily biased towards the top of the page.
-					</p>
-					
+						This graph shows the link position on a page. The distribution of the link that leads to the shortest path is roughly uniform, but the distribution of the links that the players actually clicked on is heavily biased towards the top of the page.
+					</p>					
 				</header>
 				<header>
 					<h3>So we're done! ... right?</h3>
 					<p>
-						Unfortunately not. We need to carefully choose a <strong>control group</strong> in order to isolate the effect of link position. Ideally our control group should act similar to human intuition while choosing links. Luckily, we do have a predictor for semantic similarity: <strong>Wikipedia Graph embeddings</strong>! Given a page and a target destination, we can use <strong>cosine similarity</strong> to calculate the page that is closest to the target destination in the embedding space. This gives us our control group.
+						Unfortunately not. We need to carefully choose a <strong>control group</strong> in order to isolate the effect of link position. Ideally our control group should act similar to human intuition while choosing links. Luckily, we do have a predictor for semantic similarity: <strong>Wikipedia graph embeddings</strong>! Given a page and a target destination, we can use <strong>cosine similarity</strong> to calculate the page that is closest to the target destination in the embedding space. This gives us our control group.
 					</p>
 				</header>
 				<header>
@@ -85,19 +84,21 @@
 				<header>
 					<h2>Where are the links on the page?</h2>
 					<p>
-						Notice in the following graph that the distribution of the link position on the page differs greatly between categories.
+						The following graphs show that the distribution of the link position on the page differs greatly between categories.
 					</p>
 					<embed src="plots/relative_position/relative_position_density_by_category.png" width = 70% height = 70%>
 					<p>
 						The splotch plot below helps us visualise the correlation between the Pagerank and the position of the link on the page for each category. 
 						<br><br>
 						Think of each plot as a Wikipedia page, where the links in the page get more important as you go from left to right. Going down within a plot is akin to scrolling down a page. The shading of the plot represents how often a link to a page of that category appears at that position with such a level of importance.
-						<br><br>
-						Some categories do exhibit a tendency towards a corner. For example, <i>Science</i> and <i>History</i> with greater importance are more likely to appear at the top of the page.
-						<br><br>
-						The key takeaway for the purposes of our analysis is that there is some correlation between Category, Pagerank and the position of the link on the page.					
+						<br><br>					
 					</p>
 					<embed src="plots/jointdist_pagerank_relpos/jointdist_pagerank_relpos.png" width="75%" height="75%">
+					<p>
+						Some categories do exhibit a tendency towards a corner. For example, <i>Science</i> and <i>History</i> pages with greater importance are more likely to appear at the top of the page.
+					<br><br>
+					The key takeaway for the purposes of our analysis is that there is some correlation between Category, Pagerank and the position of the link on the page.
+					</p>
 				</header>
 			</div>
 		</section>
@@ -107,8 +108,7 @@
 				<header>
 					<h3>Unconfounding the Confounders</h3>
 					<p>
-						We can attenuate their effect by calculating a <strong>propensity score</strong> for each page, which is the probability that a a player will click on the page given the values of the confounding factors. Afterwards, we can match each link clicked to the link in the control group with the closest propensity score. This greatly increases the power of our statistical analysis.
-						 
+						We can attenuate their effect by calculating a <strong>propensity score</strong> for each page, which is the probability that a player will click on the page given the values of the confounding factors. Afterwards, we can match each clicked link to the link in the control group with the closest propensity score. This greatly increases the power of our statistical analysis.						 
 					</p>
 					<embed src="images/causal_diagram_propensity.png" width = 485 height = 349>
 				</header>
@@ -133,8 +133,9 @@
 				</div>
 				<header>
 					<p>
-						After controlling for propensity, we see that the control group shifted to slightly favour links at the top of the page. This indicates 
-						Running an independent t-test on the control and treatment groups, we get p-value close to zero <strong>(p ~ 1e-12)</strong> even after balancing the groups. This is a strong indication that players are indeed influenced by the position of the link on the page.
+						After controlling for propensity, we see that the control group shifted to slightly favour links at the top of the page. This indicates running an independent t-test on the control and treatment groups, we get p-value close to zero <strong>(p ~ 1e-12)</strong> even after balancing the groups. 
+						<br><br>
+						<strong>This indicates that players are indeed influenced by the position of the link on the page.</strong>
 					</p>
 				</header>
 			</div>
@@ -144,7 +145,7 @@
 			<div class="content box style2">
 				<h2>Conclusion</h2>
 				<p>
-					We have provided temoral analysis on the link structure of Wikipedia from 2007 to 2022. We have shown that players are indeed more likely to click a link just because it appears higher in the page. This is a strong indication that the link structure of a page can be used to influence the user's behaviour. This can be used to improve the user experience of a website, or even to manipulate the user's behaviour.
+					We have provided temporal analysis on the link structure of Wikipedia from 2007 to 2022. We have shown that players are indeed more likely to click a link just because it appears higher in the page. This is a strong indication that the link structure of a page can be used to influence the user's behaviour. This can be used to improve the user experience of Wikipedia, or even to manipulate the user's behaviour.
 					<br><br>
 					<strong>Thank you for reading our data story!</strong>
 				</p>
