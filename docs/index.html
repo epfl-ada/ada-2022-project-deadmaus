@@ -12,7 +12,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload">
+	<body>
 		<!-- Header -->
 		<header id="header">
 			<h1>deadmaus</h1>
@@ -40,16 +40,14 @@
 		<section id="one" class="main style2 right dark fullscreen">
 			<div class="content box style2">
 				<header>
-					<h2>Introduction</h2>
+					<h2>Wikipedia</h2>
 				</header>
-				<p><a href="https://wikipedia.org/"><strong>Wikipedia</strong></a> is a beast. A beast which is also many people’s best friend. 
-					Haven’t we all been in a situation where we just had to know the name of Napoleon's mother? And the name of the 
-					house where she spent her final days? In this case, the link structure 
-					of <strong>Wikipedia</strong> can be quite helpful. Going into the page of Napoleon you might very well find the name of his mother and a 
-					link to the page about her life, where you find that she lived at <a href = "https://it.wikipedia.org/wiki/Palazzo_Bonaparte_(Roma)">Palazzo Bonaparte</a> in Roma until she died at 85 years of age.
+				<p>
+					<a href="https://wikipedia.org/"><strong>Wikipedia</strong></a> is a beast. But it is also your best friend.
+					Haven’t we all gone down the Wikipedia rabbit hole where you start the day researching on <a href = "https://en.wikipedia.org/wiki/Napoleon">Napoleon</a> and end up spending hours reading up on his mother and the
+					house where she spent her final days? In this case, the link structure of <strong>Wikipedia</strong> can be quite helpful. Napoleon's Wikipedia page has a link to the page of his mother's life, where you can find that she lived at <a href = "https://en.wikipedia.org/wiki/House_of_Bonaparte">Palazzo Bonaparte</a> in Roma until she died at 85 years of age.
 					<br><br>
-					This is the logic which should determine the link structure of <strong>Wikipedia</strong>. On each page, links should be available 
-					to other pages which are related to the first page.
+					This is the logic which should determine the link structure of <strong>Wikipedia</strong>: On each page, there should be links to related pages.
 			</div>
 			<a href="#two" class="button style2 down anchored">Next</a>
 		</section>
@@ -57,79 +55,63 @@
 		<!-- Two -->
 		<section id="two" class="main style2 left dark fullscreen">
 			<div class="content box style2">
-				<p>This intuition is what the game <a href="https://dlab.epfl.ch/wikispeedia/play/"><strong>Wikispeedia</strong></a> builds on. 
+				<h2>Wikispeedia</h2>
+				<p>This intuition is what the game <strong>Wikispeedia</strong> builds on. 
 					The game challenges the user to go from page A to page B 
-					only through using the links of the respective pages. Stanford University collected data on ~76000 of these games, 
-					recording users' navigation through a subset consisting of ~4600 pages of <strong>Wikipedia</strong> in 2009. This allows us to study 
-					how the subset is connected and how users chose to navigate these paths. 
+					only through using the links of the respective pages. Many interesting strategies have developed from players, including getting to the page of <a href="https://en.wikipedia.org/wiki/United_States">the United States</a> as fast as possible, before focusing in on the destination page.
 					<br><br>
-					<strong>What do the paths that the players took look like? <br> 
-						How do these paths differ from the actual link structure of Wikipedia?</strong>
+					<a href="https://dlab.epfl.ch/wikispeedia/play/"><strong>Try it yourself!</strong></a>
+					<br><br>
+					Do you find the links of <strong>2009 Wikipedia</strong> intuitive? What strategies do you find effective?
 				</p>
-			</div>
-			<a href="#introend" class="button style2 down anchored">Next</a>
-		</section>
-
-		<!-- EDA -->
-		<section id="introend" class="main style3 primary">
-			<div class="content">
-				<header>
-					<p>Collaborative authorship is the key that allowed <strong>Wikipedia</strong> to grow into the beast that it is. 
-						<strong>Wikipedia</strong> has around 44,8 million registered users who can contribute. In November 2022, more than 120 000 updated Wikipedia pages. 
-						This results in the evolution of each page and its links over time.
-						<br><br>
-						<strong>What does this change look like from 2009 to 2022?</strong></p>
-				</header>
 			</div>
 			<a href="#Our Dataset" class="button style2 down anchored">Next</a>
 		</section>
 
-		<section id="Our Dataset" class="main style3 primary">
+		<section id="Our Dataset" class="main style3 secondary">
 			<div class="content">
 				<header>
 					<h2>Our Dataset</h2>
 					<p>
-						Our dataset is a combination of two datasets - Wikispedia data from Stanford University and Wikipedia data from the website itself.
-						We scraped the network information of Wikipedia from 2010 - 2022 of all existing pages of the Stanford dataset. 
-						This resulted in 13 versions of each page which we performed temporal analysis on.
+						Our dataset is a combination of two datasets - <strong>Wikispeedia</strong> data from Stanford University and <strong>Wikipedia</strong> data from the website itself. 
 						<br><br>
-						On top of the network, Wikispedia also gave us the paths that players took while playing the game.  
+						Collaborative authorship is the key that allowed Wikipedia to grow into the beast that it is. Wikipedia has around 44,8 million registered users who can contribute. In November 2022, more than 120 000 individuals submitted updates to Wikipedia pages. Of all existing pages of the Stanford dataset, we scraped the network information of Wikipedia each year from 2010 - 2022.
+						<br><br>
+						On top of the network, Wikispedia also gave us the paths that players took while playing the game. Stanford University collected data on ~76000 of these games, recording users' navigation through ~4600 Wikipedia pages in 2009.  
 					</p>
 				</header>
-				<div>
-					<p>Let's take a first look at the categories of the Wikipedia pages. <i>Science</i> is the most common category, followed by <i>Geography</i>.</p>
-					<embed src="plots/category_distribution.html" width = 750 height = 437>
-				</div>
 			</div>
 		</section>
 
-		<section id="Wikispeedia" class="main style3 secondary">
+		<section id="What does our data look like?" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h2>What does Wikispedia look like?</h2>
+					<h2>What does our data look like?</h2>
 					<p>
-						We embeded the network generated by Wikispedia into a graph, and then projected it down to 3 dimensions.
-						The closer the pages appear to each other, the closer they are in semantic space.
-						In general, articles of the same category appear close to each other. In particular, if we filter by <i>Science</i>,
-						we can see that there are dense clusters in <i>Physics</i> and <i>Chemistry</i>. Additionally notice that under <i>Science</i>, the <i>Bird</i> cluster is much closer to the <i>Dinosaur</i> and  are closer together. In contrast, <i>Geography</i> is more spread out. Wikispedia players apparently find it easier to relate from places to other topics.
+						Let's take a first look at the categories of the Wikipedia pages.<br><i>Science</i> is the most common category, followed by <i>Geography</i>.
 					</p>
-					
+					<embed src="plots/category_distribution.html" width = 750 height = 437>
+				</header>
+				<header>
+					<h3>Great, but what about the pages themselves?</h3>
+					<p>
+						Next, we embeded the network generated by <strong>Wikispeedia</strong> into a graph, and then projected it down to 3 dimensions. The closer the pages appear to each other, the closer they are in semantic space.
+						In general, pages of the same category appear close to each other. In particular, if we filter by <i>Science</i>, we can see that there are dense clusters in <i>Physics</i> and <i>Chemistry</i>. Additionally notice that under <i>Science</i>, the <i>Bird</i> cluster is much closer to the <i>Dinosaur</i> and are closer together. In contrast, <i>Geography</i> is more spread out. Wikispedia players apparently find it easier to relate from places to other topics.
+					<br><br>
+					<strong>This relationship is also present across pages.</strong>
+					<br><br>
+						Try selecting <i>Music</i> and <i>IT</i> in the <strong>Wikipedia</strong> graph. Notice that the <i>IT</i> page closest to the largest <i>Music</i> cluster is <a href="https://en.wikipedia.org/wiki/Napster">Napster</a>, a music "sharing" website popular in 2007.
+					</p>
+				
 					<iframe src="plots/projections/umap_wikispeedia_paths.html" loading="lazy" width = "850px" height = "850px"></iframe>
-					<p>
-						<h3>This relationship is also present across articles. </h3>
-						Try selecting <i>Music</i> and <i>IT</i>. Notice that the <i>IT</i> page closest to the largest <i>Music</i> cluster is <a href="https://en.wikipedia.org/wiki/Napster">Napster</a>, a music "sharing" website popular in 2007.
-					</p>
 					<iframe src="plots/projections/umap_2009.html" loading="lazy" width = "850px" height = "850px"></iframe>
-					<p>
-						<h3>Where are the differences between the Wikispeedia paths and the actual Wikipedia pages? </h3>
-						Now select <i>Music</i> only in the Wikispeedia paths in all 3 graphs. In Wikipedia, the main <i>Music</i> cluster forms a crescent shape, with classical music concepts like <i>The Rite of Spring</i> and <i>Venus and Adonis</i> on one end, and modern music like <i>Iron Maiden</i> and <i>Queen</i> on the other. In contrast, the classical music and modern music clusters are more distinctly separate from each other in the Wikispeedia paths embeddings. This is likely due to the fact that the relationships <strong>within</strong> the clusters are more intuitive than the relationships <strong>across</strong> the clusters.
-						<br><br>
-						<strong>Try playing with the graph and drawing connections between different articles!</strong>
-						<br>
-					</p>
 					<iframe src="plots/projections/umap_2022.html" loading="lazy" width = "850px" height = "850px"></iframe>
+					<h3>What are the differences between the Wikispeedia paths and the actual Wikipedia pages? </h3>
 					<p>
-					
+						Now select <i>Music</i> only in the Wikispeedia paths in all 3 graphs. In Wikipedia, the main <i>Music</i> cluster forms a crescent shape, with classical music concepts like <a href="https://en.wikipedia.org/wiki/The_Rite_of_Spring">The Rite of Spring</a> and <a href="https://en.wikipedia.org/wiki/Venus_and_Adonis_(Shakespeare_poem)">Venus and Adonis</a> on one end, and modern music like <a href="https://en.wikipedia.org/wiki/Iron_Maiden">Iron Maiden</a> and <a href="https://en.wikipedia.org/wiki/Queen_(band)">Queen</a> on the other. In contrast, the classical music and modern music clusters are more distinctly separate from each other in the Wikispeedia paths embeddings. This means that Wikispeedia players find the relationships <strong>within</strong> these clusters much more intuitive than <strong>between</strong> the clusters.
+						<br><br>
+						<strong>Try playing with the graph and drawing connections between different pages!</strong>
+						<br>
 					</p>
 				</header>
 			</div>
@@ -149,7 +131,7 @@
 					</header>
 				</article>
 				<article class="from-right">
-					<embed src="plots/gifs/category_heatmap.gif" width="110%" height="100%">
+					<embed src="plots/gifs/category_heatmap.gif" width="120%" height="100%">
 				</article>				
 			</div>
 		</section>
@@ -160,8 +142,9 @@
 					<header>
 						<h3>Degree distribution</h3>
 							<p>
-								We can see that the degree distribution is very skewed, with a few pages having a very high number of links, and the majority of pages having a very low number of links. This is a very common phenomenon in real world networks, and is called the <a href="https://en.wikipedia.org/wiki/Power_law">power law</a>. <br><br>
-								THIS WAS WRITTEN BY COPILOT SUPER SUS CHANGE PLS
+								We can see that the degree distribution is very skewed, with a few pages having a very high number of links, and the majority of pages having a very low number of links. This is a very common phenomenon in real world networks, and is called the <a href="https://en.wikipedia.org/wiki/Power_law">power law</a>.
+								<br><br>
+								However, this distribution is more evenly spread as the years go by. This means that relatively obscure pages are being developed, and pages are being developed by linking to relatively obscure pages.
 							</p>
 						</p>
 					</header>
@@ -172,7 +155,7 @@
 			</div>
 		</section>
 
-		<section id="Methodology" class="main style3 primary">
+		<section id="Methodology" class="main style3 secondary">
 			<div class="content">
 				<header>
 					<h2>But what does this mean?</h2>
@@ -186,45 +169,51 @@
 					<p>
 						The distribution of Pageranks becomes more evenly distributed over time. This means that the pages with very low Pagerank are being developed and becoming more well-linked.
 						<br><br>
-						Let us see how the Pagerank changes across categories. <br>
+						Let us see how the Pagerank changes across categories. 
 					</p>
-					<embed src="plots/gifs/page_rank_ridge.gif" width = 100% height = 100%>
+				</header>
+				<header>
+					<embed src="plots/gifs/page_rank_ridge.gif" loading = lazy width = 100% height = 100%>
 					<p>
-						In the above graph, the Pagerank distributions for each distributions are evolving over the years. In addition, the shaded distribution represents the Pagerank distribution of the Wikispeedia graph. The most prominent difference in distributions can be seen in the <i>Countries</i> category. Namely, we see that the Pagerank distribution is quite concentrated twowards high Pagerank values. In other words, the <i>Countries</i> pages are considered to be very central. However, Wikispeedia users seem to disagree on this. Instead, according to them, the centrality measure of the <i>Countries</i> category is a much wider distribution with most pages being less important than the actual Wikipedia graph would suggest.
+						The Pagerank distributions for each distributions are evolving over the years. In addition, the shaded distribution represents the Pagerank distribution of the Wikispeedia graph. The most prominent difference in distributions can be seen in the <i>Countries</i> category. Namely, we see that the Pagerank distribution is quite concentrated twowards high Pagerank values. In other words, the <i>Countries</i> pages are considered to be very central. However, Wikispeedia users seem to disagree on this. Instead, according to them, the centrality measure of the <i>Countries</i> category is a much wider distribution with most pages being less important than the actual Wikipedia graph would suggest.
 					</p>
 				</header>
 			</div>
 		</section>
 
-		<section id="Methodology" class="main style3 primary">
+		<section id="Wikipedia: An Evolving Network" class="main style3 primary">
 			<div class="content">
 				<header>
+					<h2>Wikipedia: An Evolving Network</h2>
+					<p>
+						Now let's take a look at which pages changed the most in terms of links.
+					</p>
 					<p>
 						The greatest increases in outlinks are seemingly random. This is because the greatest increases in outlinks are from pages that Wikipedia writers decide to develop. This is a testament to how bad inlinks are at predicting the importance of pages.
 					</p>
-					<embed src = images/outlinks.png width = 100% height = 100%>
+					<embed src = images/outlinks.png width = 400 height = 100%>
 					<p>
-						Countries dominate the articles with the most outlinks by far. Something always happens somewhere, so developing a Wikipedia page can easily be done by adding links to <i>Country</i> pages.
+						Countries dominate the pages with the most outlinks by far. Something always happens somewhere, so developing a Wikipedia page can easily be done by adding links to <i>Country</i> pages.
 					</p>
 					<embed src = images/inlinks.png width = 100% height = 100%>
 					<p>
-						We also noticed that in 2020, the page <i>David Heymann</i> exploded in Pagerank, with a 65% increase in percentile in one year. This can be attributed to the COVID-19 pandemic, as he was the director of the WHO's Health Emergencies Programme. This represents a real increase in the importance of his page.
+						We also noticed that in 2020, the page <i>David Heymann</i> exploded in Pagerank, with a 65% increase in percentile in one year. This can be attributed to the COVID-19 pandemic, as he was the director of the WHO's Health Emergencies Programme. This represents a real increase in the importance of his page. TODO: NOT TRUE BUT OKAY
 					</p>
 					<embed src = images/pagerank.png width = 100% height = 100%>
 				</header>
 			</div>
 		</section>
 
-		<section id="Higher links get more clicks" class="main style3 primary">
+		<section id="Higher links get more clicks" class="main style3 secondary">
 			<div class="content">
 				<header>
-					<h2>But what does this mean?</h2>
+					<h2>What can we do with this data?</h2>
 					<p>
-						BUT WHAT IF THERES ANOTHER FACTOR THAT INFLUENCES WHY PLAYERS CLICK ON LINKSSSS?  SPOOKYYYY 
+						Now we have a good idea of how the network is changing over time. We have seen the <strong>graph embeddings</strong> give insights on semantic similarity between pages, and that <strong>Category</strong> and <strong>Pagerank</strong> strongly affect the importance of pages. But what does this mean for the development of pages? What factors affect Wikispeedia players clicking a link to a page?
 					</p>
 					
 				</header>
-				<a href=index_2.html class="button style2 bottom">Next Page</a>
+				<a href=index_2.html class="button style2 bottom">Click here to find out!</a>
 			</div>
 			
 		</section>
@@ -255,62 +244,24 @@
 						</article>
 						<article class="from-right">
 							<a href="images/fulls/02.jpg" class="image fit"><img src="images/fulls/02.jpg" title="Distribution of the sum of each path's page ranks but idk the difference" alt="" /></a>
-						</article>
-						<article class="from-left">
-							<a href="images/2009_category.png" class="image fit"><img src="images/2009_category.png" title="Articles by category in 2009" alt="" /></a>
-						</article>
-						<article class="from-right">
-							<a href="images/2022_category.png" class="image fit"><img src="images/2022_category.png" title="Articles by category in 2022" alt="" /></a>
-						</article>
-						<article class="from-left">
-							<a href="images/wikispeedia_category.png" class="image fit"><img src="images/wikispeedia_category.png" title="Articles by category in Wikispeedia" alt="" /></a>
-						</article>
-						<article class="from-right">
-							<a href="images/wikispeedia_hits.png" class="image fit"><img src="images/wikispeedia_hits.png" title="ahahhahah" alt="" /></a>
-						</article>
 					</div> -->
-
 			<!-- </div>
 		</section> -->
 
-
-		<!-- Contact -->
-			<!-- <section id="contact" class="main style3 secondary">
-				<div class="content">
-					<header>
-						<h2>Say Hello.</h2>
-						<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.</p>
-					</header>
-					<div class="box">
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
-								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
-								<div class="field"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
-							</div>
-							<ul class="actions special">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
-						</form>
-					</div>
-				</div>
-			</section> -->
-
 		<!-- Footer -->
+		<footer id="footer">
 
-			<footer id="footer">
+			<!-- Icons -->
+				<ul class="icons">
+					<li><a href="https://github.com/epfl-ada/ada-2022-project-deadmaus" class="icon brands fa-github"><span class="label">Github</span></a></li>
+				</ul>
 
-				<!-- Icons -->
-					<ul class="icons">
-						<li><a href="https://github.com/epfl-ada/ada-2022-project-deadmaus" class="icon brands fa-github"><span class="label">Github</span></a></li>
-					</ul>
+			<!-- Menu -->
+				<ul class="menu">
+					<li>&copy; deadmaus (no relation to music producer)</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+				</ul>
 
-				<!-- Menu -->
-					<ul class="menu">
-						<li>&copy; deadmaus (no relation to music producer)</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-					</ul>
-
-			</footer>
+		</footer>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

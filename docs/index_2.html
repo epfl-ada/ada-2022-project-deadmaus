@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>You will click this link. It is on the top.</title>
+		<title>You will click this link.<br>It is on the top.</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -27,7 +27,7 @@
 		</header>
 
 		<!-- Intro -->
-		<section id="intro" class="main style1 dark fullscreen">
+		<section id="intro2" class="main style1 dark fullscreen">
 			<div class="content">
 				<header>
 					<h2>You will click this link. It is on the top.</h2>
@@ -40,50 +40,53 @@
 		</section>
 
 		<!-- One -->
-		<section id="one" class="main style2 right dark fullscreen">
+		<section id="one2" class="main style2 right dark fullscreen">
 			<div class="content box style2">
 				<header>
-					<h2>Position of links</h2>
+					<h3>What if links are clicked just because they appear on the top?</h3>
 				</header>
 				<p>
-
-					INTRODUCE THE QUESTION
-				</p>
-			</div>
-			<a href="#two" class="button style2 down anchored">Next</a>
-		</section>
-
-		<!-- Two -->
-		<!-- <section id="two" class="main style2 left dark fullscreen">
-			<div class="content box style2">
-				<p>This intuition is what the game <a href="https://dlab.epfl.ch/wikispeedia/play/"><strong>Wikispeedia</strong></a> builds on. 
-					The game challenges the user to go from page A to page B 
-					only through using the links of the respective pages. Stanford University collected data on ~76000 of these games, 
-					recording users' navigation through a subset consisting of ~4600 pages of <strong>Wikipedia</strong> in 2009. This allows us to study 
-					how the subset is connected and how users chose to navigate these paths. 
+					On the previous page, we introduced a few factors that can be used to characterise the importance of a page. Now we propose a new, simpler factor:
 					<br><br>
-					<strong>What do the paths that the players took look like? <br> How do they differ from the shortest path between the two pages?</strong>
+					<strong>What if Wikispeedia players just click the first link they see?</strong>
 				</p>
 			</div>
 			<a href="#introend" class="button style2 down anchored">Next</a>
-		</section> -->
+		</section>
 
-		<!-- EDA -->
+		<!-- Introend -->
 		<section id="introend" class="main style3 primary">
 			<div class="content">
 				<header>
-					<h2>The position of links</h2>
+					<h2>Link Position</h2>
+					<embed src="plots/relative_position.html">
 					<p>
-						Now we explore the effect the position of the link has on the probability of the user clicking it. 
-						There are many factors that can affect the probability of a player clicking a link. We use the actual shortest path to the link as an unbiased estimator of the probability of the player clicking the link. Therefore, if we compare the position of the link that the player actually clicks to the link that would get him closest to the target, we can see how the position of the link affects the probability of the player clicking it.	
+						This graph shows the position on the page of links. The distribution of the shortest-path link is roughly uniform, but the distribution of the links that the players actually clicked on is heavily skewed towards the top of the page.
 					</p>
 				</header>
-				<embed src="plots/relative_position.html" width = 100% height = 100%>
+				<header>
+					<h3>So we're done! ... right?</h3>
+					<p>
+						Unfortunately, no. There are many confounding factors that can affect the probability of a player clicking a link, and we need to account for them in order to isolate the effect of link position. In the previous page, we identified <strong>Pagerank</strong> and <strong>Category</strong> as two factors that greatly affect the link structure of Wikispeedia, but on top of these, there are many other confounding factors, like human intuition, that we cannot manually account for.
+					</p>
+					<embed src="images/causal_diagram.png" width = 500 height = 300>
+					<p>
+						We need to carefully choose a <strong>control</strong> in order to account for these confounders. Luckily, we do have a predictor for semantic similarity: <strong>Graph embeddings</strong>! Given a page and a target destination, we can calculate the page that is closest to the target destination in the embedding space. This page can serve as a control pair to the link that the player <i>actually</i> clicked on. 
+					</p>
+					
+				</header>
+				
+				
 				<p>
 					The shortest path links is uniformly distributed over the pages. However, users are biased towards links that appear higher on the page.
 				</p>
+				<header>
+					<h2>Let's put it to the test!</h2>
+					<p>
+						T TEST LETS GO
+					</p>
+				</header>
 			</div>
-
 		</section>
 
 		<!-- <section id="" class="main style3 primary">

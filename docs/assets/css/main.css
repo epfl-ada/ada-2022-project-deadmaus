@@ -567,8 +567,8 @@ input, select, textarea {
 	}
 
 	h3 {
-		font-size: 1.75em;
-		line-height: 1em;
+		font-size: 1.65em;
+		line-height: 1.25em;
 		letter-spacing: -0.05em;
 	}
 
@@ -2257,10 +2257,29 @@ input, select, textarea {
 		background-repeat: repeat, no-repeat;
 	}
 
+/* Intro */
+
+	#intro2 {
+		background: url("images/overlay.png"), url("../../images/intro2.jpg");
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, bottom center;
+		background-repeat: repeat, no-repeat;
+	}
+
 /* One */
 
 	#one {
 		background: url("images/overlay.png"), url("../../images/one.jpg");
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+
+/* One2 */
+
+	#one2 {
+		background: url("images/overlay.png"), url("../../images/one2.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
 		background-position: top left, center center;
